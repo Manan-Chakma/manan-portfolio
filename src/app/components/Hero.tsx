@@ -20,8 +20,9 @@ export function Hero() {
                     Full Stack Software Developer
                 </p>
 
-                <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
                     Passionate about creating scalable applications and solving complex problems.
+                    I am currently seeking Graduate Software Engineer or Software Engineer roles in Australia where I can contribute my knowledge, grow as a professional, and deliver value to the organization.
                 </p>
 
                 <div className="flex gap-4 justify-center mb-12">
