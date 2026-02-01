@@ -2,15 +2,26 @@ import { FaGithub } from "react-icons/fa";
 import { FiLinkedin } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 
+import Image from 'next/image'
+
 export function Hero() {
     return (
         <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-6">
             <div className="max-w-4xl mx-auto text-center">
-                <div className="mb-6">
-                    <div className="w-32 h-32 bg-linear-to-br from-blue-600 to-indigo-600 rounded-full mx-auto flex items-center justify-center text-white text-5xl">
-                        MC
+                <div className="flex justify-center mb-6">
+                    <div className="w-40 h-40 rounded-full overflow-hidden">
+                        <Image
+                            className="object-cover w-full h-full"
+                            src="/profile.jpg"
+                            width={150}
+                            height={150}
+                            alt="Picture of the author"
+                        />
                     </div>
                 </div>
+                {/* <div className="w-32 h-32 bg-linear-to-br from-blue-600 to-indigo-600 rounded-full mx-auto flex items-center justify-center text-white text-5xl">
+                        MC
+                    </div> */}
 
                 <h1 className="text-5xl md:text-6xl mb-4 text-gray-900">
                     Hi I'm <span className="text-blue-600">Manan Chakma</span>
