@@ -1,5 +1,22 @@
+'use client'
+
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 const experiences = [
     {
+        id: 1,
         title: "Security Risk Officer",
         employmentType: 'Part-Time',
         company: 'WA Police Force',
@@ -20,6 +37,7 @@ const experiences = [
 
     },
     {
+        id: 2,
         title: "Teacher",
         employmentType: 'Casual',
         company: 'AICODE Australia',
@@ -42,6 +60,7 @@ const experiences = [
 
     },
     {
+        id: 3,
         title: "Software Engineer",
         employmentType: 'Full-Time',
         company: 'Brain Station 23',
@@ -65,6 +84,7 @@ const experiences = [
 
     },
     {
+        id: 4,
         title: "Associate Software Engineer",
         employmentType: 'Full-Time',
         company: 'Apsis Solutions Ltd.',
@@ -88,11 +108,82 @@ const experiences = [
 
 ];
 
+interface ExpandMoreProps extends IconButtonProps {
+    expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+})(({ theme }) => ({
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+    }),
+    variants: [
+        {
+            props: ({ expand }) => !expand,
+            style: {
+                transform: 'rotate(0deg)',
+            },
+        },
+        {
+            props: ({ expand }) => !!expand,
+            style: {
+                transform: 'rotate(180deg)',
+            },
+        },
+    ],
+}));
+
 export function Experience() {
+    const [expandedId, setExpandedId] = React.useState(false);
+
+    const handleExpandClick = (keyId: any) => {
+        setExpandedId(expandedId == keyId ? null : keyId);
+    };
     return (
         <section id="experience" className="py-20 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl mb-12 text-center text-gray-900">Experience</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6">
+                    {experiences.map(({
+                        id, title, employmentType, company, companyType, location, startDate, endDate, totalDuration, skills, responsibilities
+                    }) => (
+                        <Card key={id}>
+                            <CardHeader title={title} subheader={company + '-' + location} />
+                            <CardContent>
+                                <div>{employmentType + ' (' + totalDuration + ')'} - {startDate} - {endDate}</div>
+                                <div>
+                                    <span>Key skills: </span> <span>{skills}</span>
+                                </div>
+                            </CardContent>
+                            <CardActions>
+                                <ExpandMore
+                                    expand={expandedId}
+                                    onClick={() => handleExpandClick(id)}
+                                    aria-expanded={expandedId}
+                                    aria-label="show more"
+                                >
+                                    <ExpandMoreIcon />
+                                </ExpandMore>
+                            </CardActions>
+
+                            <Collapse in={expandedId} timeout="auto" unmountOnExit>
+                                <CardContent>
+                                    <ul>
+                                        {responsibilities.map((item, index) => (
+                                            // Key attribute is essential for React to efficiently update lists
+                                            <li key={index}>
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </CardContent>
+                            </Collapse>
+                        </Card>
+                    ))}
+                </div>
             </div>
         </section>
     )
