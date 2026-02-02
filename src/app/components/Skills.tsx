@@ -32,7 +32,7 @@ const skills = [
     { icon: SiPycharm, name: "PyCharm" },
     { icon: VscVscode, name: "VS Code" },
     { icon: FaUbuntu, name: "Ubuntu" },
-    { icon: FaWindows, name: "Windows" },
+    // { icon: FaWindows, name: "Windows" },
 ];
 
 export function Skills() {
