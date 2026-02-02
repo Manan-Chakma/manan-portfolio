@@ -108,36 +108,9 @@ const experiences = [
 
 ];
 
-interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-})(({ theme }) => ({
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-    variants: [
-        {
-            props: ({ expand }) => !expand,
-            style: {
-                transform: 'rotate(0deg)',
-            },
-        },
-        {
-            props: ({ expand }) => !!expand,
-            style: {
-                transform: 'rotate(180deg)',
-            },
-        },
-    ],
-}));
 
 export function Experience() {
-    const [expandedId, setExpandedId] = React.useState(false);
+    const [expandedId, setExpandedId] = React.useState(null);
 
     const handleExpandClick = (keyId: any) => {
         setExpandedId(expandedId == keyId ? null : keyId);
@@ -151,7 +124,7 @@ export function Experience() {
                         id, title, employmentType, company, companyType, location, startDate, endDate, totalDuration, skills, responsibilities
                     }) => (
                         <Card key={id}>
-                            <CardHeader title={title} subheader={company + '-' + location} />
+                            <CardHeader title={title} subheader={company + ', ' + location} />
                             <CardContent>
                                 <div>{employmentType + ' (' + totalDuration + ')'} - {startDate} - {endDate}</div>
                                 <div>
@@ -159,26 +132,32 @@ export function Experience() {
                                 </div>
                             </CardContent>
                             <CardActions>
-                                <ExpandMore
-                                    expand={expandedId}
+                                <IconButton
+                                    // Rotate icon and manage aria-expanded state
+                                    sx={{ transform: expandedId === id ? 'rotate(180deg)' : 'rotate(0deg)', marginLeft: 'auto', transition: 'transform 0.3s' }}
                                     onClick={() => handleExpandClick(id)}
-                                    aria-expanded={expandedId}
+                                    aria-expanded={expandedId === id}
                                     aria-label="show more"
                                 >
                                     <ExpandMoreIcon />
-                                </ExpandMore>
+                                </IconButton>
                             </CardActions>
 
-                            <Collapse in={expandedId} timeout="auto" unmountOnExit>
-                                <CardContent>
-                                    <ul>
-                                        {responsibilities.map((item, index) => (
-                                            // Key attribute is essential for React to efficiently update lists
-                                            <li key={index}>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
+                            <Collapse in={expandedId === id} timeout="auto" unmountOnExit>
+                                <CardContent className='m-8'>
+                                    <div>
+                                        <div>
+                                            Responsibilities:
+                                        </div>
+                                        <ul>
+                                            {responsibilities.map((item, index) => (
+                                                // Key attribute is essential for React to efficiently update lists
+                                                <li key={index}>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </CardContent>
                             </Collapse>
                         </Card>
