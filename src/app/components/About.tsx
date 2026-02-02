@@ -10,13 +10,19 @@ export function About() {
                     <div>
                         <p className="text-lg text-gray-700 mb-6">
                             I am an MS Computer Science graduate from Edith Cowan University (ECU) with a strong foundation in software development, problem solving, and analytical thinking.
-                            I am passionate about building efficient and user-focused applications and continuously improving my technical skills.
                         </p>
 
                         <p className="text-lg text-gray-700 mb-6">
-                            During my studies, I worked on academic and practical projects using Python, .NET, R and Bash Script, where I developed experience in coding, debugging, and teamwork.
+                            During my studies, I worked on academic and practical projects using Python, .NET, R and Bash Script.
                             Additionally, I gained valuable experience through the professional placement at WAPOL in the final semester of my academic journey.
-                            I enjoy learning new technologies and applying them to solve real-world problems.
+                        </p>
+
+                        <p className="text-lg text-gray-700 mb-6">
+                            Prior to my postgraduate studies, I worked full-time as a Software Engineer for over two and half years, where I developed strong expertise in Python, JavaScript, and PostgreSQL.
+                            I worked extensively on Python based Odoo platform, contributing to both frontend (Owl.js) and backend (Python).
+                            I contributed to ERP modules such as Sales, Purchasing, Invoicing, Billing, and POS.
+                            Additionally, my experience with Apache Cordova strengthened my proficiency in JavaScript and jQuery, enhancing my adaptability across multiple technologies and frameworks.
+
                         </p>
                     </div>
 
