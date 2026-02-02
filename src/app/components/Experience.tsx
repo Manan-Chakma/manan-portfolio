@@ -47,7 +47,7 @@ const experiences = [
         endDate: 'Jun 2025',
         totalDuration: '1 yr 8 mo',
         location: 'Perth, Western Australia',
-        skills: 'communication, teaching, time management, adaptability',
+        skills: 'Communication, Teaching, Time Management, Adaptability',
         learnMore: '',
         photos: [],
         responsibilities: [
@@ -70,7 +70,7 @@ const experiences = [
         endDate: 'Jun 2023',
         totalDuration: '1 yr 6 mo',
         location: 'Dhaka, Bangladesh',
-        skills: 'Odoo, Python, JavaScript, Git, PostgreSQL, standups, Agile methodologies',
+        skills: 'Odoo, Python, JavaScript, Git, PostgreSQL, Standups, Agile methodologies',
         learnMore: '',
         photos: [],
         responsibilities: [
@@ -110,60 +110,94 @@ const experiences = [
 
 
 export function Experience() {
-    const [expandedId, setExpandedId] = React.useState(null);
+    const [expandedId, setExpandedId] = React.useState<number | null>(null);
 
-    const handleExpandClick = (keyId: any) => {
-        setExpandedId(expandedId == keyId ? null : keyId);
+    const handleExpandClick = (keyId: number) => {
+        setExpandedId(expandedId === keyId ? null : keyId);
     };
-    return (
-        <section id="experience" className="py-20 px-6 bg-white">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl mb-12 text-center text-gray-900">Experience</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-6">
-                    {experiences.map(({
-                        id, title, employmentType, company, companyType, location, startDate, endDate, totalDuration, skills, responsibilities
-                    }) => (
-                        <Card key={id}>
-                            <CardHeader title={title} subheader={company + ', ' + location} />
-                            <CardContent>
-                                <div>{employmentType + ' (' + totalDuration + ')'} - {startDate} - {endDate}</div>
-                                <div>
-                                    <span>Key skills: </span> <span>{skills}</span>
-                                </div>
-                            </CardContent>
-                            <CardActions>
-                                <IconButton
-                                    // Rotate icon and manage aria-expanded state
-                                    sx={{ transform: expandedId === id ? 'rotate(180deg)' : 'rotate(0deg)', marginLeft: 'auto', transition: 'transform 0.3s' }}
-                                    onClick={() => handleExpandClick(id)}
-                                    aria-expanded={expandedId === id}
-                                    aria-label="show more"
-                                >
-                                    <ExpandMoreIcon />
-                                </IconButton>
-                            </CardActions>
 
-                            <Collapse in={expandedId === id} timeout="auto" unmountOnExit>
-                                <CardContent className='m-8'>
-                                    <div>
+    return (
+        <section id="experience" className="py-24 px-6 bg-gray-50">
+            <div className="max-w-5xl mx-auto">
+                <h2 className="text-4xl mb-16 text-center text-gray-900">
+                    Experience
+                </h2>
+
+                <div className="space-y-8">
+                    {experiences.map(
+                        ({
+                            id,
+                            title,
+                            employmentType,
+                            company,
+                            location,
+                            startDate,
+                            endDate,
+                            totalDuration,
+                            skills,
+                            responsibilities,
+                        }) => (
+                            <div
+                                key={id}
+                                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+                            >
+                                {/* Header */}
+                                <div
+                                    className="p-8 cursor-pointer"
+                                    onClick={() => handleExpandClick(id)}
+                                >
+                                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                                         <div>
-                                            Responsibilities:
+                                            <h3 className="text-xl font-semibold text-gray-900">
+                                                {title}
+                                            </h3>
+                                            <p className="text-gray-600">
+                                                {company}, {location}
+                                            </p>
                                         </div>
-                                        <ul>
-                                            {responsibilities.map((item, index) => (
-                                                // Key attribute is essential for React to efficiently update lists
-                                                <li key={index}>
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
+
+                                        <div className="text-sm text-gray-500">
+                                            {startDate} – {endDate}
+                                        </div>
                                     </div>
-                                </CardContent>
-                            </Collapse>
-                        </Card>
-                    ))}
+
+                                    <p className="mt-2 text-sm text-gray-500">
+                                        {employmentType} • {totalDuration}
+                                    </p>
+
+                                    {/* Skills chips */}
+                                    <div className="flex flex-wrap gap-2 mt-4">
+                                        {skills.split(",").map((skill: string, i: number) => (
+                                            <span
+                                                key={i}
+                                                className="text-md bg-gray-100 text-gray-700 px-3 py-1 rounded-full"
+                                            >
+                                                {skill.trim()}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Expandable section */}
+                                <div
+                                    className={`overflow-hidden transition-all duration-300 ${expandedId === id ? "max-h-125 p-8 pt-0" : "max-h-0"
+                                        }`}
+                                >
+                                    <h4 className="text-md font-semibold text-gray-700 mb-3">
+                                        Responsibilities
+                                    </h4>
+
+                                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-md leading-relaxed">
+                                        {responsibilities.map((item: string, index: number) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </section>
-    )
+    );
 }
