@@ -1,5 +1,5 @@
 import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import { Footer } from "@/app/components/Footer";
 import { Hero } from "@/app/components/Hero"
 import { About } from "@/app/components/About";
 import { Skills } from "@/app/components/Skills";
