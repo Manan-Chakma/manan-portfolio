@@ -20,7 +20,9 @@ git clone https://github.com/Manan-Chakma/manan-portfolio
 
 Move into the project folder:
 
+```
 cd manan-portfolio
+```
 
 Install dependencies:
 
