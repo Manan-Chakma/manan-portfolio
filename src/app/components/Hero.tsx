@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 export function Hero() {
     return (
-        <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-6">
+        <section id="hero" className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-6">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="flex justify-center mb-6">
                     <div className="w-40 h-40 rounded-full overflow-hidden">
