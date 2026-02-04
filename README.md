@@ -14,7 +14,9 @@ A responsive personal portfolio website built with Next.js. This project showcas
 
 Clone the repository:
 
+```
 git clone https://github.com/Manan-Chakma/manan-portfolio
+```
 
 Move into the project folder:
 
@@ -22,25 +24,35 @@ cd manan-portfolio
 
 Install dependencies:
 
+```
 npm install
+```
 
 ## Run Development Server
 
 Start the local development server:
 
+```
 npm run dev
+```
 
 Open your browser and go to:
 
+```
 http://localhost:3000
+```
 
 ## Build for Production
 
+```
 npm run build
+```
 
 Start production server:
 
+```
 npm start
+```
 
 <!---
 
