@@ -1,6 +1,9 @@
 import { FaGithub } from "react-icons/fa";
 import { FiLinkedin } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
+import { SiLeetcode, SiHackerrank, SiCodeforces } from "react-icons/si";
+import Tooltip from '@mui/material/Tooltip';
+
 
 import Image from 'next/image'
 
@@ -52,28 +55,69 @@ export function Hero() {
                 </div>
 
                 <div className="flex gap-6 justify-center">
-                    <a
-                        href="https://github.com/Manan-Chakma"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-blue-600 transition-colors"
-                    >
-                        <FaGithub size={28} />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/manan-chakma/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-blue-600 transition-colors"
-                    >
-                        <FiLinkedin size={28} />
-                    </a>
-                    <a
-                        href="mailto:mananchakma32@gmail.com"
-                        className="text-gray-600 hover:text-blue-600 transition-colors"
-                    >
-                        <MdOutlineMail size={28} />
-                    </a>
+                    <Tooltip title="Github">
+                        <a
+                            href="https://github.com/Manan-Chakma"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <FaGithub size={28} />
+                        </a>
+                    </Tooltip>
+
+                    <Tooltip title="Linkedin">
+                        <a
+                            href="https://www.linkedin.com/in/manan-chakma/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <FiLinkedin size={28} />
+                        </a>
+                    </Tooltip>
+
+                    <Tooltip title="Hackerrank">
+                        <a
+                            href="https://www.hackerrank.com/profile/mananchakma32"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <SiHackerrank size={28} />
+                        </a>
+                    </Tooltip>
+
+                    <Tooltip title="Leetcode">
+                        <a
+                            href="https://leetcode.com/u/Manan-Chakma/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <SiLeetcode size={28} />
+                        </a>
+                    </Tooltip>
+
+                    <Tooltip title="Codeforces">
+                        <a
+                            href="https://codeforces.com/profile/chow03"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <SiCodeforces size={28} />
+                        </a>
+                    </Tooltip>
+
+                    <Tooltip title="Mailto">
+                        <a
+                            href="mailto:mananchakma32@gmail.com"
+                            className="text-gray-600 hover:text-blue-600 transition-colors"
+                        >
+                            <MdOutlineMail size={28} />
+                        </a>
+                    </Tooltip>
                 </div>
             </div>
         </section>

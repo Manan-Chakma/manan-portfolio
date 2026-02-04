@@ -112,7 +112,7 @@ export function Experience() {
                     Experience
                 </h2>
 
-                <div className="space-y-8">
+                <div className="space-y-4">
                     {experiences.map(
                         ({
                             id,
@@ -128,7 +128,7 @@ export function Experience() {
                         }) => (
                             <div
                                 key={id}
-                                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+                                className="bg-white shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
                             >
                                 {/* Header */}
                                 <div
