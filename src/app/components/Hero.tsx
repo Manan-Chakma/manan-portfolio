@@ -1,13 +1,20 @@
+'use client'
+
+import { useState } from 'react';
+import { PdfModal } from '@/app/components/PdfModal';
 import { FaGithub } from "react-icons/fa";
 import { FiLinkedin } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 import { SiLeetcode, SiHackerrank, SiCodeforces } from "react-icons/si";
 import Tooltip from '@mui/material/Tooltip';
+import { TiAttachment } from "react-icons/ti";
 
 
 import Image from 'next/image'
 
 export function Hero() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const pdfUrl = '/Manan_Chakma_Resume.pdf';
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-6">
             <div className="max-w-4xl mx-auto text-center">
@@ -40,12 +47,14 @@ export function Hero() {
                 </p>
 
                 <div className="flex gap-4 justify-center mb-12">
-                    <a
-                        href="#contact"
-                        className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    <button
+                        className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex gap-1"
+                        onClick={() => setIsModalOpen(true)}
                     >
-                        Get In Touch
-                    </a>
+                        <TiAttachment size={23} /> Preview CV
+
+                    </button>
+                    <PdfModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} pdfUrl={pdfUrl} />
                     <a
                         href="#projects"
                         className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
