@@ -15,6 +15,13 @@ import Image from 'next/image'
 export function Hero() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const pdfUrl = '/Manan_Chakma_Resume.pdf';
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 px-6">
             <div className="max-w-4xl mx-auto text-center">
@@ -55,12 +62,12 @@ export function Hero() {
 
                     </button>
                     <PdfModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} pdfUrl={pdfUrl} />
-                    <a
-                        href="#projects"
+                    <button
                         className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                        onClick={() => scrollToSection('projects')}
                     >
                         View Work
-                    </a>
+                    </button>
                 </div>
 
                 <div className="flex gap-6 justify-center">
