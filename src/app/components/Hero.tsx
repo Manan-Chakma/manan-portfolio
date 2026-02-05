@@ -38,7 +38,7 @@ export function Hero() {
                 </h1>
 
                 <p className="text-2xl md:text-3xl text-gray-700 mb-8">
-                    Full Stack Software Developer
+                    Software Engineer
                 </p>
 
                 <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
